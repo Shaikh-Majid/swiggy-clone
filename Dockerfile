@@ -1,24 +1,11 @@
-# Use Node.js 16 slim as the base image
-FROM node:16
+FROM adoptopenjdk/openjdk11 
+      
+EXPOSE 8080
+ 
+ENV APP_HOME /usr/src/app
 
-# Set the working directory
-WORKDIR /apps
+COPY target/*.jar $APP_HOME/app.jar
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+WORKDIR $APP_HOME
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
-COPY . .
-
-# Build the React app
-RUN npx update-browserslist-db@latest --update-db --yes
-RUN npm run build
-
-# Expose port 3000 (or the port your app is configured to listen on)
-EXPOSE 3000
-
-# Start your Node.js server (assuming it serves the React app)
-CMD ["npm", "start"]
+CMD ["java", "-jar", "app.jar"]
