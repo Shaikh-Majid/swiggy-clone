@@ -17,7 +17,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: swiggy-app
-        image: shaikh888/devopsrepo:v73
+        image: shaikh888/devopsrepo:v77
         imagePullPolicy: "Always"
         ports:
-        - containerPort: 3000
+        - containerPort: 80
