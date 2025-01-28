@@ -3,6 +3,7 @@ pipeline {
     tools{
         maven 'maven3'
         nodejs 'Nodejs'
+        docker 'docker'
     }
     environment{
         REGISTRY = 'shaikh888/devopsrepo'
