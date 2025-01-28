@@ -3,7 +3,7 @@ pipeline {
     tools{
         maven 'maven3'
         nodejs 'Nodejs'
-        docker 'docker'
+    
     }
     environment{
         REGISTRY = 'shaikh888/devopsrepo'
@@ -31,7 +31,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${REGISTRY}:v${BUILD_NUMBER} ."
+                    sh '''
+                    sudo yum install docker"
+                    sudo systemctl start docker"
+                    usermod -aG docker jenkins"
+                    docker build -t ${REGISTRY}:v${BUILD_NUMBER} .
+                    '''
                 }
             }
         }
