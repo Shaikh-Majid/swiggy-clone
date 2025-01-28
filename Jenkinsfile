@@ -27,7 +27,7 @@ pipeline {
         //     }
         // }
         
-        stage('Build Docker Image') {
+        stage('Build Docker Image and Push') {
             steps {
                 script {
                     sh "docker build -t ${REGISTRY}:v${BUILD_NUMBER} ."
