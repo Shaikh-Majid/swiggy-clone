@@ -32,9 +32,9 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    sudo yum install docker"
-                    sudo systemctl start docker"
-                    usermod -aG docker jenkins"
+                    sudo yum install docker
+                    sudo systemctl start docker
+                    usermod -aG docker jenkins
                     docker build -t ${REGISTRY}:v${BUILD_NUMBER} .
                     '''
                 }
