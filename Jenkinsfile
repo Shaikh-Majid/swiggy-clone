@@ -6,7 +6,7 @@ pipeline {
     }
     environment{
         REGISTRY = 'shaikh888/devopsrepo'
-        SCANNER_HOME =tool 'sonar-scanner'
+        //SCANNER_HOME =tool 'sonar-scanner'
     }
 
     stages {
@@ -27,7 +27,7 @@ pipeline {
         //     }
         // }
         
-        stage('Build Docker Image and Push') {
+        stage('Build Docker Image') {
             steps {
                 script {
                     sh "docker build -t ${REGISTRY}:v${BUILD_NUMBER} ."
